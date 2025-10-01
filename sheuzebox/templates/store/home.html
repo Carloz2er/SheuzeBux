@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheuze Box</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="/">SHEUZE BUX</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="#products">Produtos</a></li>
+                    <li>
+                        <a href="#categories">Categorias</a>
+                        <!-- Submenu de categorias pode ser adicionado aqui -->
+                    </li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-secondary">Entrar</a>
+                <a href="#" class="btn btn-primary">REGISTRAR</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>SHEUZE BUX</h2>
+                <p>A melhor loja de Robux, Gift Cards e produtos digitais do Brasil. Entrega instantânea 24/7!</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">⚡ COMPRAR AGORA</a>
+                    <a href="#" class="btn btn-secondary">Criar Conta</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="icon">💎</span>
+                        <h3>+10.000</h3>
+                        <p>Clientes Satisfeitos</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="icon">💲</span>
+                        <h3>+50.000</h3>
+                        <p>Vendas Concluídas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="product-grid">
+            <div class="container">
+                <h2>Nossos Produtos</h2>
+                <div class="grid">
+                    {% if products %}
+                        {% for product in products %}
+                        <div class="product-card">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <div class="placeholder-image"><span>Sem Imagem</span></div>
+                            {% endif %}
+                            <h3>{{ product.name }}</h3>
+                            <p class="price">R$ {{ product.price }}</p>
+                            <a href="#" class="btn btn-primary">Comprar</a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Nenhum produto disponível no momento.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us">
+            <div class="container">
+                <h2>Por que escolher a Sheuze Bux?</h2>
+                <p>A melhor experiência em compras de produtos digitais</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sheuze Bux. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
